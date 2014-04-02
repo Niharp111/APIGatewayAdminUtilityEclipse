@@ -1,0 +1,24 @@
+<div align="center" style=" font-size: 20px" >
+	<table>
+		<th>
+			Client - {{ClientInfo.client_id}}
+		</th>
+		<tr>
+			<td>
+				Provision ID
+			</td>
+			<td>
+				Capability ID
+			</td>
+		</tr>
+		<tr ng-repeat="provision in ClientInfo.provisions">
+			<td>
+					{{provision.provision_key.provider_id}}				
+			</td>
+			<td>
+					{{provision.provision_key.capability_id}}
+			</td>
+		</tr>
+	
+	</table>
+</div>
