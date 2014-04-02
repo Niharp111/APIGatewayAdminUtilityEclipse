@@ -15,6 +15,10 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                     	templateUrl : 'views/getClient.html',
                     	controller  : 'GetClientController'
                     })
+                    .when('/getClient/:client',{
+                    	controller: 'GetClientInfoController',
+                    	templateUrl: 'views/getClientInfo.html'
+                    })
                     .otherwise({
                         redirectTo: '/'
                     });
