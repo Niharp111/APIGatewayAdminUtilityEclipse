@@ -12,7 +12,7 @@ body,html{
 }
 
 #loginform{
-	color: white;
+	color: black;
 	width: 500px;
 	margin: 0 auto;
 }
@@ -25,6 +25,10 @@ body,html{
 }
 
 div.views{
+	
+	color : black;
+	background-color: #fff;
+	font-family: sans-serif;
 	min-width : 800px;
 	margin :5px;
 	float : left;
@@ -41,4 +45,29 @@ div.views{
 	display: block;
 	height: auto;
 	overflow: hidden;
+}
+
+input[type="search"] {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	-webkit-appearance: textfield
+}
+
+
+
+table {
+	max-width: 100%;
+	align :center;
+}
+
+tdheading {
+	color:blue;
+	text-align: left
+}
+
+a{
+	font-family: sans-serif;
+	width :10px;
+	text-align: center;
 }

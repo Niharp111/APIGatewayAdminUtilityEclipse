@@ -5,7 +5,7 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                   $routeProvider
                     .when('/', {
                         controller: 'AdminLoginController',
-                        templateUrl: 'views/login.html'
+                        templateUrl: 'login.html'
                     })
                     .when('/home', {
                     	controller: 'NavigatorController',
@@ -14,12 +14,13 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                     .when('/getClient', {
                     	templateUrl : 'views/getClient.html',
                     	controller  : 'GetClientController'
-                    }).when('/getClient/:client',{
+                    })
+                    .when('/getClient/:client',{
                     	controller: 'GetClientInfoController',
                     	templateUrl: 'views/getClientInfo.html'
                     })
                     .otherwise({
-                        redirectTo: '/'
+                        redirectTo: '/home'
                     });
                   }
       	])

@@ -32,7 +32,9 @@
 	</div>
 				<div ng-show="loginstatus == 'true'" ng-controller="NavigatorController">
 					<div id="menu">
-					        <a href="loginservlet">Logout</a>
+					        <a href='#home'>Home</a>
+					        
+					  
 							<accordion close-others="true"> </accordion-group> <accordion-group
 								heading="Client" is-open="false">
 							<p ng-repeat="option in clientOptions">
@@ -51,6 +53,8 @@
 					</div>
 				</div>
 				<div ng-view class="views"></div>
+				<div>
+				<p>Hi,{{$scope.admin.userName}}</p><a href="loginservlet">Logout</a></div>
 	</div>
 </body>
 </html>

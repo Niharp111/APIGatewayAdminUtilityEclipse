@@ -28,15 +28,7 @@ public class GatewayProxyHelper {
 	}
 	
 	private Response worker(String token, String baseUrl, int methodType, String targetResource, String payload){
-		Client client = ClientBuilder.newBuilder()
-		        .hostnameVerifier(new HostnameVerifier() {
-					
-					@Override
-					public boolean verify(String arg0, SSLSession arg1) {
-						return true;
-					}
-				})
-		        .build();
+		Client client = getClient();
 		
 		WebTarget webTarget = client.target(baseUrl.concat(targetResource));
 		Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
@@ -55,6 +47,19 @@ public class GatewayProxyHelper {
 				break;
 		}
 		return response;
+	}
+
+	 Client getClient() {
+		Client client = ClientBuilder.newBuilder()
+		        .hostnameVerifier(new HostnameVerifier() {
+					
+					@Override
+					public boolean verify(String arg0, SSLSession arg1) {
+						return true;
+					}
+				})
+		        .build();
+		return client;
 	}
 	
 	
