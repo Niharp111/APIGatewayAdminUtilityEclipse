@@ -15,52 +15,61 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 public class GatewayProxyHelper {
-	
-	public boolean loginWorker(String token, String baseUrl) throws IOException{
-		Response response = worker(token,baseUrl,MethodTypes.GET,"client/",null);
+
+	public boolean loginWorker(String token, String baseUrl) throws IOException {
+		Response response = worker(token, MethodTypes.GET, null, getClient()
+				.target(baseUrl.concat("client/")));
 		return response.getStatus() == HttpServletResponse.SC_OK;
 	}
 
-	public Response sessionWorker(HttpServletRequest request, int methodType, String targetResource, String payload){
+	public Response sessionWorker(HttpServletRequest request, int methodType,
+			String targetResource, String payload) {
 		String token = request.getSession().getAttribute("token").toString();
-		String baseUrl = request.getSession().getAttribute("baseUrl").toString();
-		return worker(token, baseUrl, methodType, targetResource, payload);
-	}
-	
-	private Response worker(String token, String baseUrl, int methodType, String targetResource, String payload){
-		Client client = getClient();
-		
-		WebTarget webTarget = client.target(baseUrl.concat(targetResource));
-		Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
-		invocationBuilder.header("Authorization", token);
-		Response response = null;
-		switch(methodType){
-			case MethodTypes.GET :
-				response = invocationBuilder.get();
-				break;
-			case MethodTypes.POST :
-				Entity<String> jsonEntity = Entity.entity(payload, MediaType.APPLICATION_JSON);
-				response = invocationBuilder.post(jsonEntity);
-				break;
-			default:
-				//TODO Handle it
-				break;
-		}
-		return response;
+		String baseUrl = request.getSession().getAttribute("baseUrl")
+				.toString();
+		return worker(token, methodType, payload,
+				getClient().target(baseUrl.concat(targetResource)));
 	}
 
 	 Client getClient() {
-		Client client = ClientBuilder.newBuilder()
-		        .hostnameVerifier(new HostnameVerifier() {
-					
+		return ClientBuilder.newBuilder()
+				.hostnameVerifier(new HostnameVerifier() {
+
 					@Override
 					public boolean verify(String arg0, SSLSession arg1) {
 						return true;
 					}
-				})
-		        .build();
-		return client;
+				}).build();
 	}
-	
-	
+
+	private Response worker(String token, int methodType, String payload,
+			WebTarget webTarget) {
+		Invocation.Builder invocationBuilder = webTarget
+				.request(MediaType.APPLICATION_JSON);
+		invocationBuilder.header("Authorization", token);
+		Response response = null;
+		switch (methodType) {
+		case MethodTypes.GET:
+			response = invocationBuilder.get();
+			break;
+		case MethodTypes.POST:
+			Entity<String> jsonPostEntity = Entity.entity(payload,
+					MediaType.APPLICATION_JSON);
+			response = invocationBuilder.post(jsonPostEntity);
+			break;
+		case MethodTypes.PUT:
+			Entity<String> jsonPutEntity = Entity.entity(payload,
+					MediaType.APPLICATION_JSON);
+			response = invocationBuilder.put(jsonPutEntity);
+			break;
+		case MethodTypes.DELETE:
+			response = invocationBuilder.delete();
+			break;
+		default:
+			// TODO Handle it
+			break;
+		}
+		return response;
+	}
+
 }

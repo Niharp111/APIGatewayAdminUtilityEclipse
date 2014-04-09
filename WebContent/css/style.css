@@ -57,13 +57,16 @@ input[type="search"] {
 
 
 table {
+	
 	max-width: 100%;
-	align :center;
+	margin: 0 auto;
+
+	
 }
 
 tdheading {
-	color:blue;
-	text-align: left
+	text-align: left;
+	margin: 0 auto;
 }
 
 a{
@@ -71,3 +74,4 @@ a{
 	width :10px;
 	text-align: center;
 }
+
