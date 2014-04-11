@@ -2,7 +2,7 @@
 	<table>
 		<tr style="text-align: left;">
 			<td><label>Client Name : </label></td>
-			<td><input type="text" ng-model="clientName"> </td>
+			<td><label>{{clientName}}</label> </td>
 		</tr>
 		<tr style="text-align: left;">
 		<td>
@@ -55,7 +55,7 @@
 		</tr>
 		<tr>
 			<td>
-				<button class="btn-primary" ng-click="createClient(PasswordCheckBox,IPRangeCheckBox)">Create
+				<button class="btn-primary" ng-click="createClient()">Create
 					it !!</button>
 			</td>
 		<tr>

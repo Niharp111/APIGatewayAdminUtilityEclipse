@@ -1,62 +1,80 @@
 <!DOCTYPE html>
 <html ng-app='AdminUtilityApp'>
 <head>
-    <title>Admin Utility</title>
-    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-cookies.js"></script>
-    <script type="text/javascript" src="scripts/AdminUtilityApp.js?v=1"></script>
-    <script type="text/javascript" src="scripts/controllers/login/AdminLoginController.js?v=1"></script>
-    <script type="text/javascript" src="scripts/factories/AdminUtilityHTTPInterceptor.js?v=1"></script>
-    <script type="text/javascript" src="scripts/utils/Base64.js"></script>
-    <script type="text/javascript" src="scripts/controllers/NavigatorController.js"></script>
-    <script type="text/javascript" src="scripts/controllers/client/GetClientController.js"></script>
-    <script type="text/javascript" src="scripts/controllers/client/GetClientInfoController.js"></script>
-    <script	src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
-    <script type="text/javascript" src="scripts/controllers/client/CreateClientController.js"></script>
-	 <script type="text/javascript" src="scripts/controllers/client/DeleteClientController.js"></script>
-    
-    
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/NewFile.css">
-	
-    
+<title>Admin Utility</title>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-cookies.js"></script>
+<script type="text/javascript" src="scripts/AdminUtilityApp.js?v=1"></script>
+<script type="text/javascript"
+	src="scripts/controllers/login/AdminLoginController.js?v=1"></script>
+<script type="text/javascript"
+	src="scripts/factories/AdminUtilityHTTPInterceptor.js?v=1"></script>
+<script type="text/javascript" src="scripts/utils/Base64.js"></script>
+<script type="text/javascript"
+	src="scripts/controllers/NavigatorController.js"></script>
+<script type="text/javascript"
+	src="scripts/controllers/client/GetClientController.js"></script>
+<script type="text/javascript"
+	src="scripts/controllers/client/GetClientInfoController.js"></script>
+<script
+	src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+<script type="text/javascript"
+	src="scripts/controllers/client/CreateClientController.js"></script>
+<script type="text/javascript"
+	src="scripts/controllers/client/DeleteClientController.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/NewFile.css">
+
+
 </head>
-<body>
-<div id="main">
-	<div id="banner">
-		<center>
-			<img src="img/logo-o2.svg" style="margin-right: 50px;"></img>
-			<span style="font-weight: bold;">API Gateway</span>
-			<img src="img/logo-telefonica.svg" style="margin-left: 50px;"></img>
-		</center>
+<body ng-controller="NavigatorController">
+	<div id="main">
+		<div id="banner">
+			<center>
+				<img src="img/logo-o2.svg" style="margin-right: 50px;"></img> <span
+					style="font-weight: bold;">API Gateway</span> <img
+					src="img/logo-telefonica.svg" style="margin-left: 50px;"></img>
+			</center>
+		</div>
+
+		<div ng-show="loginstatus == 'true'"
+			ng-controller="NavigatorController">
+			<div class="home">
+				<a href='#home'>Home</a>
+			</div>
+			<div class="logout">
+				<a href="loginservlet">Hi,{{$scope.admin.userName}} Logout</a>
+			</div>
+		</div>
+		<div id="menu">
+
+
+			<accordion close-others="true"> </accordion-group> <accordion-group
+				heading="Client" is-open="false">
+			<p ng-repeat="option in clientOptions">
+				<a href={{option.hrefValue}}>{{option.name}}</a>
+			</p>
+
+			</accordion-group> <accordion-group heading="Providers" is-open="false">
+			<p ng-repeat="option in providerOptions">
+				<a href={{option.hrefValue}}>{{option.name}}</a>
+			</p>
+			</accordion-group> <accordion-group heading="Capabilities" is-open="false">
+			<p ng-repeat="option in capabilityOptions">
+				<a href={{option.hrefValue}}>{{option.name}}</a>
+			</p>
+			</accordion-group> </accordion>
+		</div>
 	</div>
-				<div ng-show="loginstatus == 'true'" ng-controller="NavigatorController">
-					<div id="menu">
-					        <a href='#home'>Home</a>
-					        
-					  
-							<accordion close-others="true"> </accordion-group> <accordion-group
-								heading="Client" is-open="false">
-							<p ng-repeat="option in clientOptions">
-								<a href={{option.hrefValue}}>{{option.name}}</a>
-							</p>
-					
-							</accordion-group> <accordion-group heading="Providers" is-open="false">
-							<p ng-repeat="option in providerOptions">
-								<a href={{option.hrefValue}}>{{option.name}}</a>
-							</p>
-							</accordion-group> <accordion-group heading="Capabilities" is-open="false">
-							<p ng-repeat="option in capabilityOptions">
-					            <a href={{option.hrefValue}}>{{option.name}}</a>
-					        </p>
-							</accordion-group> </accordion>
-					</div>
-				</div>
-				<div ng-view class="views"></div>
-				<div>
-				<p>Hi,{{$scope.admin.userName}}</p><a href="loginservlet">Logout</a></div>
+	<div ng-view class="views"></div>
+
 	</div>
 </body>
 </html>

@@ -17,11 +17,20 @@ var AdminUtilityApp = angular.module('AdminUtilityApp',
 	}).when('/createClient', {
 		templateUrl : 'views/client/createClient.html',
 		controller : 'CreateClientController'
-	}).when('/deleteClient', {
+	}).when('/updateClient/:client', {
+		templateUrl : 'views/client/updateClient.html',
+		controller : 'CreateClientController'
+	})
+	.when('/deleteClient', {
 		templateUrl : 'views/client/deleteClient.html',
 		controller : 'DeleteClientController'
+	}).when('/confirmationPage', {
+		templateUrl : 'views/client/confirmationPage.html',
+		controller : 'CreateClientController'
+	}).when('/error', {
+		templateUrl : 'views/errors/error.html'
 	}).otherwise({
-		redirectTo : '/home'
+		redirectTo : '/error'
 	});
 } ])
 

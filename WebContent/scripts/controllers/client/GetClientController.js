@@ -1,5 +1,5 @@
 AdminUtilityApp.controller('GetClientController',
-     function($scope, $http) {
+     function($scope, $http,$location) {
           console.log('Called the GetClientController');
              $http({
                           method  : 'GET',
@@ -13,4 +13,6 @@ AdminUtilityApp.controller('GetClientController',
                .error(function(data){
                 console.log('error');
             });
+             
+         
 });

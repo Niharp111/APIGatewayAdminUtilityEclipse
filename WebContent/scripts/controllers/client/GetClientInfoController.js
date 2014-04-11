@@ -2,11 +2,11 @@ AdminUtilityApp.controller('GetClientInfoController',
      function($scope, $routeParams,$http) {
 
           console.log('Called the GetClientInfoController');
-          $scope.clientId = $routeParams.client;
+          var clientId = $routeParams.client;
        
              $http({
                           method  : 'GET',
-                          url     : 'admin/client/'+$scope.clientId,
+                          url     : 'admin/client/'+clientId,
                       })
                .success(function(data) {
                               console.log(JSON.stringify(data));

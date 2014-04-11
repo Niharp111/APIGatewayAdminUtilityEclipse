@@ -48,13 +48,17 @@ div.views{
 }
 
 input[type="search"] {
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
-	-webkit-appearance: textfield
-}
-
-
+	height:30px;
+	width:410px;
+	}
+input[type="password"] {
+	height:30px;
+	width:200px;
+	}
+input[type="text"] {
+	height:30px;
+	width:200px;
+	}
 
 table {
 	
@@ -74,4 +78,3 @@ a{
 	width :10px;
 	text-align: center;
 }
-
