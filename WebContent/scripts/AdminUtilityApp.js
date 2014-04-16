@@ -19,14 +19,14 @@ var AdminUtilityApp = angular.module('AdminUtilityApp',
 		controller : 'CreateClientController'
 	}).when('/updateClient/:client', {
 		templateUrl : 'views/client/updateClient.html',
-		controller : 'CreateClientController'
+		controller : 'UpdateClientController'
 	})
 	.when('/deleteClient', {
 		templateUrl : 'views/client/deleteClient.html',
 		controller : 'DeleteClientController'
 	}).when('/confirmationPage', {
 		templateUrl : 'views/client/confirmationPage.html',
-		controller : 'CreateClientController'
+		controller : 'ConfirmationPageController'
 	}).when('/error', {
 		templateUrl : 'views/errors/error.html'
 	}).otherwise({
